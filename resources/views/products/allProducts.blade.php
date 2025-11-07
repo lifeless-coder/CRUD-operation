@@ -32,9 +32,15 @@
                             <td>{{ $product->category }}</td>
                             <td>{{ $product->created_at }}</td>
                             <td>
-                                <a href="{{ route('prducts.details', $product->id) }}" class="btn btn-primary btn-sm">View</a>
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info btn-sm">Edit</a> 
-                                <a href="" class="btn btn-danger btn-sm"> delete</a>
+                                <form action="{{ route('products.delete', $product->id) }}" method="POST" >
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{ route('prducts.details', $product->id) }}" class="btn btn-primary btn-sm">View</a>
+                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info btn-sm">Edit</a> 
+                                    <button class="btn btn-danger btn-sm">
+                                        delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

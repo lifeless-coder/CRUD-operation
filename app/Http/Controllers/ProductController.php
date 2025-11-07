@@ -35,4 +35,11 @@ class ProductController extends Controller
          ]);
          return redirect()->route('products.all');
     }
+
+
+    public function DeleteProduct(Request $request, $id){
+        $product= product::find($id)->delete();
+        return redirect()->route('products.all')->with('success', 'Product deleted successfully');
+    }
 }
+
