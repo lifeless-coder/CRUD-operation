@@ -18,13 +18,18 @@ class CreateProduct extends Controller
             'price'=>'required|numeric',
             'category'=>'required',
             'seller'=>'required|numeric',
+            'image'=>'nullable|image|mimes:png,jpg,gif,svg|max:2048',
         ]);
-
+           $imagepath = null;
+           if($request->hasFile('image')){
+            $imagepath=$request->file('image')->store('images','public');
+           }
         product::create([
             'decscription'=>$request->description,
             'price'=>$request->price,
             'category'=>$request->category,
             'seller'=>$request->seller,
+            'image'=>$imagepath
         ]);
          return redirect()->route('products.all');
     }

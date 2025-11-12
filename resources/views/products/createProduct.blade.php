@@ -10,7 +10,7 @@
         <div class="container">
         <div class="card-header"><h4>Create a products</h4>
             <div class="card-body"> <a href="{{ route('products.all') }}", class="btn btn-info btn-sm mb-3">back</a>
-                <form action="{{ route("product.store") }}" method="POST">
+                <form action="{{ route("product.store") }}" method="POST" enctype="multipart/form-data">
                     @csrf
                    <div class="mt-2">
                      <label for="Description">Description</label>
@@ -33,6 +33,8 @@
                     <!-- @error("seller")
                         <span class="text-danger">{{ $message }}</span>
                     @enderror -->
+                    <label for="image">Image</label>
+                    <input type="file"name="image" class="form-control" accept="image/*"><br>
                     <div>
                 <button type="submit" class="btn btn-success btn-sm" >submit</button>
                     </div>

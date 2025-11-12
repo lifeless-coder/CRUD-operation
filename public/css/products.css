@@ -1,0 +1,5 @@
+.card-img {
+  max-height: 50px;
+  object-fit: cover; /* keeps the image from stretching */
+  
+}

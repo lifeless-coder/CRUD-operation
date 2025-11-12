@@ -10,6 +10,7 @@
         <div class="container">
         <div class="card-header"><h4>All products</h4>
             <div class="card-body"> <a href="{{ route('products.create') }}", class="btn btn-success btn-sm mb-3">create product</a>
+             <a href="{{ route('products.frontendAll') }}", class="btn btn-success btn-sm mb-3">Fronend view</a>
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -46,6 +47,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>
