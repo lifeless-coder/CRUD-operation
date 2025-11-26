@@ -10,13 +10,18 @@
         <div class="container">
         <div class="card-header"><h4>Create a products</h4>
             <div class="card-body"> <a href="{{ route('products.all') }}", class="btn btn-info btn-sm mb-3">back</a>
-               <p> <strong>Pruduct ID: </strong>{{$product->id}}</p>
-               <p> <strong>Details: </strong>{{$product->decscription}}</p>
-               <p> <strong>price: </strong>{{$product->price}}</p>
-               <p> <strong>catagory: </strong>{{$product->category->name}}</p>
-               <p> <strong>posted at: </strong>{{$product->created_at}}</p>
-               <p> <strong>updated at: </strong>{{$product->updated_at}}</p>
-               
+                <form action="{{ route("categories.store") }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                   <div class="mt-2">
+                    
+                   
+                    <label for="category">Category name</label>
+                    <input type="text" name="category"><br>
+                    <div>
+                <button type="submit" class="btn btn-success btn-sm" >Add</button>
+                    </div>
+                   </div>
+                </form>
             </div>
         </div>
     </div>

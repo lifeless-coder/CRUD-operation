@@ -21,3 +21,6 @@ Route::get('/edit-product/{id}',[ProductController::class,'EditProduct'])->name(
 Route::post('/update-product/{id}',[ProductController::class, 'UpdateProduct'])->name('products.update');
 Route::delete('/delete-product/{id}', [ProductController::class, 'DeleteProduct'])->name('products.delete');
 Route::get('/frontend-products', [ProductController::class,'ShowFrontendAllProducts'])->name('products.frontendAll');
+Route::get('/category/create',[CategoryController::class,'CreateCategory'])->name('categories.create');
+Route::post('/category/search',[CategoryController::class,'CategorySearch'])->name('categories.search');
+Route::get('/category/{id}/products',[CategoryController::class,'CategoryShow'])->name('categories.show');

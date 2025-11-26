@@ -35,9 +35,9 @@
 
                                     @endif
                                     <div class="">
-                                        <h5 class="card-title">{{$product->decscription}}</h5>
+                                        <h5 class="card-title">{{$product->description}}</h5>
                                         <p class="card-text">Price:<b>{{ $product->price }}</b><br>
-                                            Catagory: {{ $product->category }}
+                                            Catagory: {{ $product->category->name }}
                                             <a href="{{ route('prducts.details', $product->id) }}"
                                                 class="btn btn-primary btn-sm">View details</a>
                                         </p>

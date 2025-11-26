@@ -13,7 +13,7 @@
                 <form action="{{ route("product.store") }}" method="POST" enctype="multipart/form-data">
                     @csrf
                    <div class="mt-2">
-                     <label for="Description">Description</label>
+                     <label for="description">Description</label>
                     <input type="text" name="description"><br>
                     <!-- @error("description")
                         <span class="text-danger">{{ $message }}</span>
@@ -23,8 +23,16 @@
                     <!-- @error("price")
                         <span class="text-danger">{{ $message }}</span> -->
                     <!-- @enderror -->
-                    <label for="Category">Category</label>
-                    <input type="text" name="category"><br>
+                    <label for="category">Category</label>
+                    <select name="category_id" class="form-control">
+                        <option value="">-- Select Category --</option>
+                            @foreach($categories as $category)
+                        <option value="{{ $category->id }}">
+                        {{ $category->name }}
+                        </option>
+                        @endforeach
+                        </select>
+
                     <!-- @error('category')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror -->

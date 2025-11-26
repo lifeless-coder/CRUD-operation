@@ -4,15 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
-    public function ShowAllProducts(Request $request)
-    {
-        $AllProducts= Product::get();
-        return view('Products.allProducts', compact('AllProducts'));
+    // public function ShowAllProducts(Request $request)
+    // {
+    //     $AllProducts= Product::with('category')->get();
+    //     $categories = Category::all();
+    //     return view('Products.allProducts', compact('AllProducts', 'categories'));
 
+    // }
+
+    public function ShowAllProducts(Request $request)
+{
+    $categories = Category::all();
+
+    // Check if category_id is selected
+    if ($request->has('category_id') && $request->category_id != '') {
+        $AllProducts = Product::with('category')
+            ->where('category_id', $request->category_id)
+            ->get();
+    } else {
+        $AllProducts = Product::with('category')->get();
     }
+
+    return view('Products.allProducts', compact('AllProducts', 'categories'));
+}
+
     public function ShowProductDetails(Request $request, $id)
     {
         $product= product::find($id);

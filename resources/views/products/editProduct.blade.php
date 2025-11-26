@@ -14,14 +14,14 @@
                     @csrf
                   
                    <div class="mt-2">
-                     <label for="Description">Description</label>
-                    <input type="text" name="description" placeholder="" value="{{ $product->decscription }}"><br>
+                     <label for="description">Description</label>
+                    <input type="text" name="description" placeholder="" value="{{ $product->description }}"><br>
                     
                     <label for="price">Price</label>
                     <input type="number" name="price" placeholder="" value="{{ $product->price }}"><br>
                     
                     <label for="Category">Catagory</label>
-                    <input type="text" name="category" placeholder="" value="{{$product->category}}"><br>
+                    <input type="text" name="category" placeholder="" value="{{$product->category_id}}"><br>
                     
                     <label for="seller">Seller Id</label>
                     <input type="number"name="seller" placeholder="" value="{{ $product->seller }}"><br>
