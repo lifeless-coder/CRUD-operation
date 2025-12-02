@@ -37,14 +37,6 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('categories.all')->with('success', 'Category deleted successfully.');
     }
-    public function CategorySearch(Request $request)
-    {
-         $request->validate([
-            'category_id'=>'required|numeric',
-        ]);
-        $category = $request->input('category_id');
-        return redirect()->route('categories.show' ,$request->category_id);
-    }
     public function CategoryShow($id)
     {
         $categories= $id;

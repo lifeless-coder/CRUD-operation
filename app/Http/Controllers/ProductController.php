@@ -63,8 +63,18 @@ class ProductController extends Controller
 
     public function ShowFrontendAllProducts(Request $request)
     {
-        $AllProducts= Product::get();
-        return view('Products.frontendAllProduct', compact('AllProducts'));
+         $categories = Category::all();
+
+    // Check if category_id is selected
+    if ($request->has('category_id') && $request->category_id != '') {
+        $AllProducts = Product::with('category')
+            ->where('category_id', $request->category_id)
+            ->get();
+    } else {
+        $AllProducts = Product::with('category')->get();
+    }
+
+        return view('Products.frontendAllProduct', compact('AllProducts', 'categories'));
 }
 
 }

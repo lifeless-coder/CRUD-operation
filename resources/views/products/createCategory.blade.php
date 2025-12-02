@@ -10,7 +10,7 @@
         <div class="container">
         <div class="card-header"><h4>Create a products</h4>
             <div class="card-body"> <a href="{{ route('products.all') }}", class="btn btn-info btn-sm mb-3">back</a>
-                <form action="{{ route("categories.store") }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route("categories.create") }}" method="POST" enctype="multipart/form-data">
                     @csrf
                    <div class="mt-2">
                     
