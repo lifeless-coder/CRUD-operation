@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/products.css') }}">
+
 
 </head>
 
@@ -32,47 +34,39 @@
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Categories</a>
                     </li>
 
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
+                    
                 </ul>
 
                 <!-- Category Search Form -->
-                <form class="d-flex gap-2" action="{{ route('products.all') }}" method="GET">
+                <div class="container my-3">
 
-                    <select class="form-select " name="category_id">
-                        <option value="">All</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                        @endforeach
-                    </select>
+    <form action="{{ route('products.frontendAll') }}" method="GET" class="search-wrapper">
 
-                    <button type="submit" class="btn btn-success">
-                        Search
-                    </button>
+        <div class="search-box d-flex align-items-center">
 
-                </form>
+            <i class="fas fa-search search-icon"></i>
+
+            <select class="form-select search-select" name="category_id">
+                <option value="">All Categories</option>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+                @endforeach
+            </select>
+
+            <button class="btn btn-primary search-button">
+                Search
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
 
             </div>
         </div>
@@ -177,16 +171,16 @@
             Products
           </h6>
           <p>
-            <a href="#!" class="text-reset">Angular</a>
+            <a href="#!" class="text-reset">Pricing</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">React</a>
+            <a href="#!" class="text-reset">Categories</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Vue</a>
+            <a href="{{route("products.frontendAll")}}" class="text-reset">Collection</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Laravel</a>
+            <a href="#!" class="text-reset">Orders</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -198,16 +192,16 @@
             Useful links
           </h6>
           <p>
-            <a href="#!" class="text-reset">Pricing</a>
+            <a href="{{route("products.frontendAll")}}" class="text-reset">Home</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
+            <a href="#!" class="text-reset">Blogs</a>
           </p>
           <p>
             <a href="#!" class="text-reset">Help</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">About Us</a>
           </p>
         </div>
         <!-- Grid column -->
